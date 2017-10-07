@@ -30,6 +30,24 @@
  		return $this->content;
  	}
 
+ 	//Adicionar um comentário
+ 	public function addComment($comment){
+ 		$this->comment[] = $comment;
+ 	}
+
+ 	//Remove um comentário
+ 	public function rmComment($comment){
+
+ 		/*array_search é uma função que busca 
+ 		o valor do primeiro parametro com o array
+ 		informado no segundo paramentro, assim
+ 		retornando a chave do elemento comparado*/
+
+ 		$key = array_search($comment, $this->comment);
+ 		if($key!==false){
+ 			unset($this->comment[$key]);
+ 		}
+ 	}
  }
 
  ?>
