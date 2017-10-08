@@ -11,25 +11,25 @@
 	} 
 
  	//Protegendo contra SQL Injection (\)
- 	public function escape($date){
+ 	public function escape($data){
 
  		$link = $this->database->getConnection();
 
- 		if (!is_array($date)){
- 			$date = mysqli_real_escape_string($link, $date);
+ 		if (!is_array($data)){
+ 			$data = mysqli_real_escape_string($link, $data);
  		}else{
- 			$array = $date;
+ 			$array = $data;
 
  			foreach ($array as $key => $value) {
  				$key = mysqli_real_escape_string($link, $key);
  				$value = mysqli_real_escape_string($link, $value);
 
- 				$date[$key] = $value;
+ 				$data[$key] = $value;
  			}
  		}
 
  		$this->database->closeConnection($link);
- 		return $date;
+ 		return $data;
  	}
 
  	//Executando as querys do MySQL
@@ -45,19 +45,36 @@
 
 	//CRUD
 
-	//Create
-	public function create($table, array $date){
-		$date = $this->escape($date);
+	//Create - Adiciona ao banco os comentários ou posts
+	public function create($table, array $data){
+		$data = $this->escape($data);
 
-		$fields = implode(', ', array_keys($date));
-		$values = "'".implode("', '", $date)."'";
+		$fields = implode(', ', array_keys($data));
+		$values = "'".implode("', '", $data)."'";
 
 		$query = "INSERT INTO {$table} ( {$fields} ) VALUES ( {$values} )";
 
 		return $this->execute($query);	
 	}
 
-	//Read
+	//Read - Ler os dados dos posts e dos comentários do banco
+	public function read($table, $params = null, $fields = "*"){
+		$params = isset($params) ? " {$params}": null;
+
+		$query = "SELECT {$fields} FROM {$table}{$params}";
+		$result = $this->execute($query);
+
+		if(!mysqli_num_rows($result)){
+			return false;
+		}else{
+			while ($res = mysqli_fetch_assoc($result)) {
+				$data[] = $res;
+			}
+
+			return $data;
+		}
+
+	}
 
 	//Update
 
