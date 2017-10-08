@@ -34,10 +34,9 @@
 
  	//Executando as querys do MySQL
  	public function execute($query){
-
  		$link = $this->database->getConnection();
 
- 		$result = @mysqli_query($link, $query) or die(@mysqli_error());
+ 		$result = @mysqli_query($link, $query) or die(@mysqli_error($link));
  		
  		$this->database->closeConnection($link);
  		return $result;
@@ -76,7 +75,20 @@
 
 	}
 
-	//Update
+	//Update - Alterar os dados do banco
+	public function update($table, array $data, $where = null){
+		$data = $this->escape($data);
+		foreach ($data as $key => $value) {
+			$fields[] = "{$key} = '{$value}'";
+		}
+
+		$fields = implode(', ', $fields);
+		$where = isset($where) ? " WHERE {$where}": null;
+
+		$query = "UPDATE {$table} SET  {$fields}{$where}";
+
+		return $this->execute($query);
+	}
 
 	//Delete
 
