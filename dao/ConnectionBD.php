@@ -1,28 +1,30 @@
 <?php 
-
  class ConnectionBD{
 
- 	private $link;
+ 	private $localhost;
+ 	private $username;
+ 	private $password;
+ 	private $database;
 
-	//Conectar com banco de dados
- 	function __construct($host, $user, $pass, $bd){
-
- 		$this->link = @new mysqli($host, $user, $pass, $bd);
-
- 		if($this->link->connect_errno){
- 			echo "Falha na conexão com o banco de dados";
- 		}
+	//Atribuir valores ao parametros da conexão
+ 	function __construct(){
+ 		$this->localhost = "localhost";
+ 		$this->username = "root";
+ 		$this->password = "";
+ 		$this->database = "mini_blog";
  	}
 
- 	public function getLink(){
- 		return $this->link;
+ 	//Abre a conexão
+ 	public function getConnection(){
+ 		$link = @mysqli_connect($this->localhost, $this->username, $this->password, $this->database) or die(mysqli_connect_erro());
+ 		mysqli_set_charset($link, "utf8") or die(mysqli_error($link));
+
+ 		return $link;
  	}
 
- 	//Fecha conexão do banco de dados
+ 	//Fecha a conexão
  	public function closeConnection($link){
- 		if(@!mysqli_close($link))
- 			echo "Erro ao fechar a conexão com BD";
+ 		@mysqli_close($link) or die(mysqli_error($link));
  	}
-
  	}
  ?>

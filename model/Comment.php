@@ -3,17 +3,17 @@
  //Objeto comentário
  class Comment{
 
-	private $idPost;
+	private $id;
  	private $name;
  	private $email;
  	private $content;
 
- 	public function setIdPost($idPost){
- 		$this->idPost = $idPost;
+ 	public function setId($id){
+ 		$this->id = $id;
  	}
 
- 	public function getIdPost(){
- 		return $this->idPost;
+ 	public function getId(){
+ 		return $this->id;
  	}
 
  	public function setName($name){
