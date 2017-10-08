@@ -26,29 +26,5 @@
  	public function closeConnection($link){
  		@mysqli_close($link) or die(mysqli_error($link));
  	}
-
- 	//Protegendo contra SQL Injection
- 	public function escape($date){
-
- 		$link = $this->getConnection();
-
- 		if (!is_array($date)){
- 			$date = mysqli_real_escape_string($link, $date);
- 		}else{
- 			$array = $date;
-
- 			foreach ($array as $key => $value) {
- 				$key = mysqli_real_escape_string($link, $key);
- 				$value = mysqli_real_escape_string($link, $value);
-
- 				$date[$key] = $value;
- 			}
- 		}
-
- 		$this->closeConnection($link);
- 		return $date;
- 	}
-
- 		
- 	}
- ?>
+	}
+ ?> 
