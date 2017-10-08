@@ -1,6 +1,6 @@
 <?php 
 
-	include("ConnectionBD.php");
+	include_once("ConnectionBD.php");
 
 	class CRUD{
 

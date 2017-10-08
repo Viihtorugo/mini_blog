@@ -1,6 +1,6 @@
 <?php 
   
-  require_once 'Comment.php';
+  include_once 'Comment.php';
 
   class Post{
 
