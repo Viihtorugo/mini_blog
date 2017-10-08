@@ -1,18 +1,28 @@
 <?php 
-	
+
+ class ConnectionBD{
+
+ 	private $link;
+
 	//Conectar com banco de dados
- 	function getConnectionBD($host, $user, $pass, $bd){
- 		$link = new mysqli($host, $user, $pass, $bd);
+ 	function __construct($host, $user, $pass, $bd){
 
- 		if($link->connect_errno)
- 			echo "Falha na conexão: (".$mysqli->connect_errno.") ".$mysqli->connect_error;
+ 		$this->link = @new mysqli($host, $user, $pass, $bd);
 
- 		return $link;
+ 		if($this->link->connect_errno){
+ 			echo "Falha na conexão com o banco de dados";
+ 		}
+ 	}
+
+ 	public function getLink(){
+ 		return $this->link;
  	}
 
  	//Fecha conexão do banco de dados
- 	function closeConnectionBD($link){
- 		if(!mysqli_close($link))
+ 	public function closeConnection($link){
+ 		if(@!mysqli_close($link))
  			echo "Erro ao fechar a conexão com BD";
+ 	}
+
  	}
  ?>
