@@ -10,10 +10,10 @@
 		$this->database = new ConnectionBD();
 	} 
 
- 	//Protegendo contra SQL Injection
+ 	//Protegendo contra SQL Injection (\)
  	public function escape($date){
 
- 		$link = $database->getConnection();
+ 		$link = $this->database->getConnection();
 
  		if (!is_array($date)){
  			$date = mysqli_real_escape_string($link, $date);
@@ -28,7 +28,7 @@
  			}
  		}
 
- 		$database->closeConnection($link);
+ 		$this->database->closeConnection($link);
  		return $date;
  	}
 
@@ -43,5 +43,25 @@
  		return $result;
  	}
 
+	//CRUD
+
+	//Create
+	public function create($table, array $date){
+		$date = $this->escape($date);
+
+		$fields = implode(', ', array_keys($date));
+		$values = "'".implode("', '", $date)."'";
+
+		$query = "INSERT INTO {$table} ( {$fields} ) VALUES ( {$values} )";
+
+		return $this->execute($query);	
 	}
+
+	//Read
+
+	//Update
+
+	//Delete
+
+}
  ?>
