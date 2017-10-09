@@ -9,6 +9,7 @@
 			flex-direction: column;
 			align-content: center;
 		}
+
 		nav{
 			margin: -10px -10px auto;
 			text-align: center;
@@ -17,24 +18,29 @@
 			background: darkblue;
 			color: white;
 		}
+
 		nav a{
 			padding: 10px auto;
 			color: white;
 		}
+
 		form{
 			width: 600px;
 			margin: 10px auto;
 		}
+
 		input{
 			margin: 5px auto;
 			width: 100%;
 			text-align: center;
 		}
+
 		textarea{
 			margin: 5px auto;
 			width: 100%;
 			text-align: center;
 		}
+		
 		button{
 			margin: 5px auto;
 			width: 25%;
