@@ -94,5 +94,24 @@
 	<textarea name="content" placeholder="Comente aqui.."></textarea>
 	<button type="submit">Comentar</button>
 </form>
+<?php
+	
+	include_once('../dao/CommentDAO.php');
+
+	if(count(@$_POST)){
+		$dao = new CommentDAO();
+
+		$name = $_POST['name'];
+		$email = $_POST['email'];
+		$content = $_POST['content'];
+		
+		if($dao->createComment($name, $email, $content, $id)){
+			echo "<script>alert('Obrigado por comentar!');</script>";
+		}else{
+			echo "<script>alert('Erro ao comentar, tente novamente!');</script>";
+		}
+	}
+
+?>
 </body>
 </html>

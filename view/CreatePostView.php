@@ -62,15 +62,16 @@
 	include_once('../dao/PostDAO.php');
 
 	if(count($_POST)){
-	$dao = new PostDAO();
-	$title = @$_POST['title'];
- 	$content = @$_POST['content'];
+		$dao = new PostDAO();
+		
+		$title = @$_POST['title'];
+ 		$content = @$_POST['content'];
 
- 	if($dao->createPost($title, $content)){
- 		echo "<script>alert('Post salvado com sucesso!');</script>";
- 	}else{
- 		echo "<script>alert('Tente novamente preenchando todos os dados!');</script>";
- 	}
+ 		if($dao->createPost($title, $content)){
+ 			echo "<script>alert('Post salvado com sucesso!');</script>";
+ 		}else{
+ 			echo "<script>alert('Tente novamente preenchando todos os dados!');</script>";
+ 		}
  	}
 	?>
 </body>
