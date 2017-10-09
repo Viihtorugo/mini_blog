@@ -59,7 +59,19 @@
 			<th><a href="PostView.php?id=<?php echo $post->getId() ?>"><?php echo $post->getTitle(); ?></a></th>
 		</tr>
 		<tr>
-			<td><?php echo $post->getContent(); ?></td>
+			<td>
+			<?php
+				//Mostrar apenas os 100 primeiros caracteres
+				$content = $post->getContent(); 
+				$length = strlen($content);
+  				$max = 100;
+
+  				if($length > $max){
+  					$content = substr_replace($content, "...", $max, $length - $max);
+  				}
+
+  				echo $content;
+			?></td>
 		</tr>
 	</table>
 
