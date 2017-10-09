@@ -5,7 +5,6 @@
 	<title>Postagem</title>
 	<style type="text/css">
 		.container{
-			background: gray;
 			display: flex;
 			flex-direction: column;
 			align-content: center;
@@ -63,6 +62,30 @@
 			width: 20%;
 			margin: 10px auto;
 		}
+
+		div{
+			display: flex;
+			flex-direction: center;
+			width: 600px;
+			margin: 10px auto;
+			border: 1px solid black;
+		}
+
+		div#content {
+			width: 100%;
+			margin: 10px auto;
+			padding: 0px 10px;
+			text-align: justify;
+			text-indent: 30px;
+		}
+
+		span{
+			width: 100%;
+			margin: 10px auto;
+			text-indent: 50px;
+
+		}
+
 	</style>
 </head>
 <body>
@@ -94,8 +117,22 @@
 	<textarea name="content" placeholder="Comente aqui.."></textarea>
 	<button type="submit">Comentar</button>
 </form>
+<?php 
+
+	foreach($post->comments as $key => $comment){
+?>
+<div>
+	<span>
+		<?php
+			echo $comment->getName().': ';
+			echo $comment->getEmail();
+		?>
+	</span>
+	<div id="content"><?php echo $comment->getContent(); ?></div>
+</div>
 <?php
-	
+	}
+
 	include_once('../dao/CommentDAO.php');
 
 	if(count(@$_POST)){

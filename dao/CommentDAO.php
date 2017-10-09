@@ -25,6 +25,35 @@
  		}
  	}
  	
+ 	//Obter todos os comentarios
+ 	public function readComments($id){
+ 		$crud = new CRUD();
+ 		$bo = new CommentBO();
+ 		$comments = array();
+
+
+ 		$result = $crud->read("coment", "WHERE id_post = {$id}");
+
+ 		if($bo->validReadComment($result)){
+ 		foreach ($result as $key => $coment) {
+ 			$newComment = new Comment();
+
+ 			foreach ($coment as $key => $value) {
+ 				if ($key=="name")
+ 					$newComment->setName($value);
+ 				if ($key=="email")
+ 					$newComment->setEmail($value);
+ 				if ($key=="content")
+ 					$newComment->setContent($value);
+ 			}
+ 			
+ 			$comments[] = $newComment;
+ 		}
+ 		
+ 		}
+ 		
+ 		return $comments;
+ 	}
  }
 
 

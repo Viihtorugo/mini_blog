@@ -7,7 +7,7 @@
  	private $id;
  	private $title;
  	private $content;
- 	private $comments = array();
+ 	public $comments = array();
 
  	public function setId($id){
  		$this->id = $id;
@@ -32,7 +32,7 @@
 
  	//Adicionar um comentário
  	public function addComment($comment){
- 		$this->comment[] = $comment;
+ 		$this->comments[] = $comment;
  	}
 
  	//Remove um comentário

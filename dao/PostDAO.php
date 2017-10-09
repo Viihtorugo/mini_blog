@@ -3,6 +3,7 @@
  include_once('../model/Post.php');
  include_once('CRUD.php');
  include_once('../bo/PostBO.php');
+ include_once('../dao/CommentDAO.php');
 
  class PostDAO{
 
@@ -25,7 +26,13 @@
  				if ($key=="content")
  					$post->setContent($value);
  			}
- 			
+
+ 			$dao = new CommentDAO();
+ 			$comments = $dao->readComments($id);
+
+ 			for ($i=0; $i < count($comments); $i++) { 
+ 				$post->addComment($comments[$i]);
+ 			}
  		}
 
  		return $post;
@@ -55,7 +62,7 @@
  			
  			$posts[] = $newPost;
  		}
- 		
+
  		}
  		
  		return $posts;

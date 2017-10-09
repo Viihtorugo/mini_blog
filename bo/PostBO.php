@@ -2,7 +2,7 @@
 	
  class PostBO{
  	
- 	//Verifica tem posts no banco
+ 	//Verifica se tem posts no banco
  	public function validReadPost($array){
  		if($array==null)
  			return false;

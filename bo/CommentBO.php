@@ -16,6 +16,13 @@
 
  		return false;
  	}
- }
 
+ 	//Verifica se tem comentario no banco
+ 	public function validReadComment($array){
+ 		if($array==null)
+ 			return false;
+
+ 		return true;
+ 	}
+}
  ?>
