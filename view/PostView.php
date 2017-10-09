@@ -2,9 +2,10 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Listagem dos Post</title>
+	<title>Postagem</title>
 	<style type="text/css">
 		.container{
+			background: gray;
 			display: flex;
 			flex-direction: column;
 			align-content: center;
@@ -39,33 +40,28 @@
 		}
 	</style>
 </head>
-<body class="container">
+<body>
 <nav>
 	<a href="HomeView.php">Listagem dos post</a> |
 	<a href="CreatePostView.php">Criar Post</a>
 </nav>
-	<?php 
-		require_once '../model/Post.php';
-		require_once '../dao/PostDAO.php';
-		$dao = new PostDAO();
-		$posts = $dao->readPosts();
+<?php 
+	include_once('../dao/PostDAO.php');
+	include_once('../model/Post.php');
 
-		if(!is_null($posts)){
-		foreach ($posts as $key => $post) {
-	?>
+	$id = $_GET['id'];
+	$dao = new PostDAO();
+	$post = new Post();
 
-	<table>
-		<tr>
-			<th><a href="PostView.php?id=<?php echo $post->getId() ?>"><?php echo $post->getTitle(); ?></a></th>
-		</tr>
-		<tr>
-			<td><?php echo $post->getContent(); ?></td>
-		</tr>
-	</table>
-
-	<?php 
-		}
-		}
-	 ?>
+	$post = $dao->readOnePost($id);
+?>
+<table>
+	<tr>
+		<th><?php echo $post->getTitle(); ?></th>
+	</tr>
+	<tr>
+		<td><?php echo $post->getContent(); ?></td>
+	</tr>
+</table>
 </body>
 </html>

@@ -64,6 +64,7 @@
 		$params = isset($params) ? " {$params}": null;
 
 		$query = "SELECT {$fields} FROM {$table}{$params}";
+		
 		$result = $this->execute($query);
 
 		if(!mysqli_num_rows($result)){

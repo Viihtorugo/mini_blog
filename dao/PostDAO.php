@@ -6,20 +6,46 @@
 
  class PostDAO{
 
+ 	//obter apenas um post
+ 	public function readOnePost($id){
+ 		$crud = new CRUD();
+ 		$bo = new PostBO();
+ 		$post = new Post();
+
+ 		$result = $crud->read('post', "WHERE id = ".$id);
+
+		if($bo->validReadPost($result)){
+ 			$object = current($result);
+
+			foreach ($object as $key => $value) {
+ 				if ($key=="id")
+ 					$post->setId($value);
+ 				if ($key=="title")
+ 					$post->setTitle($value);
+ 				if ($key=="content")
+ 					$post->setContent($value);
+ 			}
+ 			
+ 		}
+ 		
+ 		return $post;
+ 	}
+
+ 	//obter todos os posts
  	public function readPosts(){
  		$crud = new CRUD();
  		$bo = new PostBO();
  		$posts = array();
 
 
- 		$array = $crud->read("post");
+ 		$result = $crud->read("post");
 
- 		if($bo->validReadPost($array)){
- 		foreach ($array as $key => $post) {
+ 		if($bo->validReadPost($result)){
+ 		foreach ($result as $key => $post) {
  			$newPost = new Post();
 
  			foreach ($post as $key => $value) {
- 				if ($key==="id")
+ 				if ($key=="id")
  					$newPost->setId($value);
  				if ($key=="title")
  					$newPost->setTitle($value);
@@ -31,6 +57,7 @@
  		}
  		
  		}
+ 		
  		return $posts;
  	}
  	
