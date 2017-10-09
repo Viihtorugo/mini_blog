@@ -37,21 +37,20 @@
 			width: 100%;
 			text-align: center;
 		}
-
 	</style>
 </head>
 <body class="container">
 <nav>
-	<a href="">Listagem dos post</a> |
-	<a href="">Editar Posts</a> |
-	<a href="">Criar Post</a>
+	<a href="HomeView.php">Listagem dos post</a> |
+	<a href="CreatePostView.php">Criar Post</a>
 </nav>
 	<?php 
 		require_once '../model/Post.php';
 		require_once '../dao/PostDAO.php';
 		$dao = new PostDAO();
-		$posts = $dao->getPosts();
+		$posts = $dao->readPosts();
 
+		if(!is_null($posts)){
 		foreach ($posts as $key => $post) {
 	?>
 
@@ -65,6 +64,7 @@
 	</table>
 
 	<?php 
+		}
 		}
 	 ?>
 </body>

@@ -48,7 +48,7 @@
 	//CRUD
 
 	//Create - Adiciona ao banco os comentários ou posts
-	public function create($table, array $data, $insertId = false){
+	public function create($table, array $data){
 		$data = $this->escape($data);
 
 		$fields = implode(', ', array_keys($data));
@@ -56,7 +56,7 @@
 
 		$query = "INSERT INTO {$table} ( {$fields} ) VALUES ( {$values} )";
 
-		return $this->execute($query, $insertId);	
+		return $this->execute($query);	
 	}
 
 	//Read - Ler os dados dos posts e dos comentários do banco
