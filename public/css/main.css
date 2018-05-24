@@ -1,0 +1,17 @@
+.body {
+    background-color: black;
+}
+
+.menu {
+    position: fixed;
+    margin: -22px -8px auto;
+    width: 100%;
+    height: 100px;
+    background-color: blue;
+}
+
+.menu-item input{
+    position: relative;
+    float: left;
+    width: 50%;
+}
