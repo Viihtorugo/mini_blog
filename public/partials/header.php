@@ -7,14 +7,15 @@
 </head>
 <body>
 <header class="menu">
-    <form class="menu-form">
-        <input class="menu-input" type="text" name="search">
-        <select >
+    <img src="img/Logo.png" width="80px" height="80px">
+    <form style="width: 75%;">
+        <input class="menu-item" type="text" name="search" placeholder="Exemplo">
+        <select class="menu-item1">
             <option value="Educação">Educação</option>
             <option value="Finanças">Finanças</option>
             <option value="Merda">Merda</option>
         </select>
-        <input type="submit" value="pesquisar" />
+        <input class="menu-item2" type="submit" value="pesquisar" />
     </form>
 </header>
 <div class="content">
