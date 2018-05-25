@@ -1,17 +1,17 @@
-.body {
-    background-color: black;
+*{
+    margin: 0%;
 }
-
-.menu {
+.menu{
     position: fixed;
-    margin: -22px -8px auto;
     width: 100%;
     height: 100px;
-    background-color: blue;
+    background-color: #4616ca
 }
-
-.menu-item input{
+.menu-form{
+    align-items: center;
+}
+.content{
     position: relative;
     float: left;
-    width: 50%;
+    margin-top: 100px;
 }

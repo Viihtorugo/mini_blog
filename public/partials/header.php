@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="css/main.css">
     <title>Global Blog</title>
 </head>
-<body class="body">
+<body>
 <header class="menu">
-    <form class="menu-item" action="">
-        <input align="center"  type="text" name="search">
-        <select align="center">
+    <form class="menu-form">
+        <input class="menu-input" type="text" name="search">
+        <select >
             <option value="Educação">Educação</option>
             <option value="Finanças">Finanças</option>
             <option value="Merda">Merda</option>
@@ -17,3 +17,6 @@
         <input type="submit" value="pesquisar" />
     </form>
 </header>
+<div class="content">
+    <h1>ola</h1>
+
