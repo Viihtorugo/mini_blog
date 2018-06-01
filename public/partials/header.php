@@ -18,6 +18,16 @@
         <input class="menu-item2" type="submit" value="pesquisar" />
     </form>
 </header>
-<div class="content">
-    <h1>ola</h1>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+
+<footer class="foot">
+ <h4 class="footerr" align="center">Código de Qualidade</h4>
 
