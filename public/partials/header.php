@@ -13,7 +13,7 @@
         <select class="menu-item1">
             <option value="Educação">Educação</option>
             <option value="Finanças">Finanças</option>
-            <option value="Merda">Merda</option>
+            <option value="Merda">M</option>
         </select>
         <input class="menu-item2" type="submit" value="pesquisar" />
     </form>
@@ -30,5 +30,5 @@
 <br>
 
 <footer class="foot">
- <h4 class="footerr" align="center">Código de Qualidade</h4>
+ <h4 class="footerr">Código de Qualidade</h4>
 
